@@ -57,9 +57,19 @@ If your default python is python 2.7, you may need to specify:
 
 `python3 calendar.py`
 
+### Chron task
 I also set up a chron task to run the script once an hour. You may want to run it more often or less often. Follow the instructions here for help:
  
 https://www.raspberrypi.org/documentation/linux/usage/cron.md
 
 *Note*: Because of the dependencies, you will need to add `cd <PATH>/python &&` before you call Python 3 with the script name (as above), where `<PATH>` is wherever you saved the repository (e.g., /home/pi).
+
+an example might be:
+```
+crontab -e
+# Insert into crontab:
+0 5-11 * * *  cd /home/pi/python && python calendar.py
+# save and exit
+```
+The above would set the job to run from 5AM until 11AM every hour
 
