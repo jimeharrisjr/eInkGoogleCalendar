@@ -11,6 +11,7 @@ The Python program here will download your calendar and print it to the e-Ink di
 
 I also set up a chron task to run the script once an hour. You may want to run it more often or less often. Follow the instructions here for help: 
 https://www.raspberrypi.org/documentation/linux/usage/cron.md
+*Note*: Because of the dependencies, you will need to add `cd <PATH>/python &&` before you call Python 3 with the script name, where `<PATH>` is wherever you saved the repository.
 
 ## Caveat:
 I used the version 1 Waveshare display (640 x 384 resolution), and the current version has a higher resolution. That means my line spacing will work, but won't use all of the screen. Look at the maxResults variable and the l (line spacing) variable, and tune them to your heart's content.
