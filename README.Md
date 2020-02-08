@@ -21,6 +21,18 @@ Start with a Raspberry Pi or Raspberry Pi 0 (way cheaper) with the latest versio
 The Waveshare board requires the SPI interface to be enabled on the Pi. If you're not sure how to do that, check out the guide here: https://www.raspberrypi-spy.co.uk/2014/08/enabling-the-spi-interface-on-the-raspberry-pi/
 
 ### Dependencies
+I make use of Pandas dataframes and timezone conversion from pytz, so you must:
+```
+pip install pandas pytz
+```
+In the code, the lines:
+```
+  eastern = pytz.timezone('US/Eastern')
+ ...
+          start = pytz.utc.localize(start, is_dst=None).astimezone(eastern)
+```
+should be changed to your time zone.
+
 Obviously, you need a Google Calendar (an exercise left to the reader). You will also need to create a credentials.json file from your Google Calendar into the python directory to give Python access to the service. The instructions for that are here:
 https://developers.google.com/calendar/quickstart/python
 
@@ -38,5 +50,5 @@ pip install --upgrade Pillow
 You will also need to download their sample repository ( https://github.com/soonuse/epd-library-python/tree/master/7.5inch_e-paper ) and copy the epdif.py and epd7in5.py files into the directory where you have downloaded this Python script.
 
 ## The Build
-The e-Ink display has a "hat" to fit onto the header of the Pi, and a ribbin cable to connect the hat to the display - that's it! I put mine in a nice shadowbox, and cut black paper to serve as a frame around the screen. You can see the pictures in the images directory.
+The e-Ink display has a "hat" to fit onto the header of the Pi, and a ribbon cable to connect the hat to the display - that's it! I put mine in a nice shadowbox, and cut black paper to serve as a frame around the screen. You can see the pictures in the images directory.
 
