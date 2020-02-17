@@ -67,16 +67,22 @@ def main():
         time = ' ' 
         date=' '
         what=' '
+        day=' '
 
         if (start.find('T') != -1):
-          #print(start)
           start =datetime.datetime.strptime(start, '%Y-%m-%dT%H:%M:%SZ')
           start = pytz.utc.localize(start, is_dst=None).astimezone(eastern)
           day = start.strftime('%A')
           date = start.strftime('%B %d')
           time = start.strftime('%I:%M %p')
           what=event['summary']
-        #print(date,time,what)
+        else:
+          start =datetime.datetime.strptime(start, '%Y-%m-%d')
+          start = pytz.utc.localize(start, is_dst=None).astimezone(eastern)
+          day = start.strftime('%A')
+          date = start.strftime('%B %d')
+          what=event['summary']
+        
         lst.append([day,date,time,what])
 
     df=pd.DataFrame(lst,columns=cols)
