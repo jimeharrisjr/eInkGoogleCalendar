@@ -40,6 +40,8 @@ pip install --upgrade google-api-python-client google-auth-httplib2 google-auth-
 
 Notice the sample Python code there is the basis for this code - altered to print to an e-ink display, rather than the console.
 
+As you go through the tutorial, find the place in the calendar.py code here where it says `events_result = service.events().list(calendarId='<insert your calendarID from google>'` and change the calendarID to the one you create in the tutorial.
+
 The e-ink display from Waveshare has its own Python code, and requires the Pillow library:
 ```
 pip install --upgrade Pillow
@@ -72,4 +74,16 @@ crontab -e
 # save and exit
 ```
 The above would set the job to run from 5AM until 11AM every hour
+
+### If your display quality begins to degrade (IMPORTANT)
+After some months I noticed my display fading, to fix it I have now updated the code to put the display to sleep after each update, and changed my chron job to call the main.py file included nightly.
+This update causes the screen to go BLACK at night, and the results are fantastic! Right back to crisp, black letters.
+
+My chrontab looks like this now:
+```
+0 6-20/2 * * * cd /home/pi/calendar/ && python3 calendar.py
+0 21 * * * cd /home/pi/calendar/ && python3 main.py
+```
+
+This updates only every two hours between 6AM and 8PM, and blacks out the screen at night.
 
